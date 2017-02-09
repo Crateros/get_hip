@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/Crateros/get_hip/issues"
   },
-  "homepage": "https://github.com/Crateros/get_hip#readme"
+  "homepage": "https://github.com/Crateros/get_hip#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "morgan": "^1.8.0",
+    "path": "^0.12.7",
+    "request": "^2.79.0"
+  }
 }
