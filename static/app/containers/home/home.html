@@ -1,26 +1,25 @@
-<h1>This is Home container</h1>
+<div>
+	<div class="container">
+		<h4>Original: <span class="original">"{{homeComp.originalInput}}"</span></h4>
+		<hr>
 
-<h4>Original</h4>
-<div style="width: 200px; height: 100px; border: 1px solid black;">
-  {{homeComp.originalInput}}
+		<h4>User Input</h4>
+		<form ng-submit="homeComp.getUserInput()">
+		    <input type="textarea" name="user-input" id="user-input-area" ng-model="homeComp.userInputArea">
+		</form>
+
+		<hr>
+
+		<div style="display: inline-block;" ng-repeat="n in homeComp.editArray track by $index" id="user-input-results">
+		  <div class="word-highlight" ng-click="homeComp.searchInput($index)">{{homeComp.editArray[$index]}}</div>
+		</div>
+
+		<hr>
+
+		<h4>Get Hip Search:</h4>
+		<form ng-submit="homeComp.searchWord()" id=word-search-form>
+		  <input type="text" id="word-search-input" placeholder="Bitchin" ng-model="homeComp.wordSearchTerm">
+		</form>
+
+	</div>
 </div>
-
-<hr>
-
-<h4>User Input</h4>
-<form ng-submit="homeComp.getUserInput()">
-    <input type="textarea" name="user-input" id="user-input-area" ng-model="homeComp.userInputArea">
-</form>
-
-<hr>
-
-<div style="display: inline-block;" ng-repeat="n in homeComp.editArray track by $index">
-  <div style="margin-right: 4px; border: 1px solid red;" ng-click="homeComp.searchInput($index)">{{homeComp.editArray[$index]}}</div>
-</div>
-
-<hr>
-
-<h4>Get Hip Search:</h4>
-<form ng-submit="homeComp.searchWord()" id=word-search-form>
-  <input type="text" id="word-search-input" placehold="Bitchin" ng-model="homeComp.wordSearchTerm">
-</form>

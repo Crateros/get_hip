@@ -1,0 +1,80 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: black;
+	color: white;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 90%;
+}
+
+h1 {
+	font-size: 60px;
+	letter-spacing: -.02em; 
+	font-weight: 800;
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 100%;               
+  background-color: white;
+  height: 1px;
+  margin: 1em 0;
+}
+
+nav {
+	padding-top: 8px;
+}
+
+nav hr {
+	margin-top: 9px;
+}
+
+nav #logo {
+	width: 150px;
+}
+
+input[type="text"], input[type="textarea"] {
+	border: none !important;
+	background-color: #1a1d20 !important;
+	outline: none !important;
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	font-size: 15px;
+	font-weight: 300;
+	padding: 8px 12px 10px 12px;
+	width: calc(100% - 23px);
+}
+
+.word-highlight {
+	background-color: #1a1d20;
+	margin: 0px 4px 4px 0;
+	padding: 3px 12px 4px 12px;
+	font-size: 60px;
+	font-weight: 700;
+}
+
+.word-highlight:hover {
+	background-color: #0BE5F5;
+	color: black;
+	cursor: pointer;
+}
+
+.original {
+	font-weight: 200;
+}
+
+
+/*** MEDIA QUERIES ***/
+
+@media screen and (max-width: 450px) {
+
+	.word-highlight {
+		font-size: 45px;
+	}
+
+}
