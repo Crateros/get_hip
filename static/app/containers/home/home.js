@@ -5,7 +5,8 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-function HomeCompCtrl($http) {
+
+function HomeCompCtrl($http, $interval) {
 
   // $sceProvider.enabled(false)
 
@@ -16,6 +17,16 @@ function HomeCompCtrl($http) {
   homeComp.currentEditIndex = {};
   homeComp.showModal = false;
   homeComp.searched = undefined;
+
+  //Delay search for 1 second after done typing
+  var interval = 1000;
+  homeComp.delayBeforeSearch = function() {
+      $interval.cancel(interval);
+      interval = $interval(function() {
+          homeComp.getUserInput();
+          $interval.cancel(interval);
+      }, 1000);
+  };
 
   homeComp.searchWord = function(word) {
     console.log("search term: ", homeComp.wordSearchTerm)
@@ -90,4 +101,4 @@ function HomeCompCtrl($http) {
   }
 
 }
-HomeCompCtrl.$inject = ['$http'];
+HomeCompCtrl.$inject = ['$http', '$interval'];

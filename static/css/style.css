@@ -2,12 +2,17 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	background-color: #16191C;
 	color: white;
+	margin-top: 60px;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 900px;
   width: 90%;
+}
+
+#ui-view {
+	background-color: #16191C;
 }
 
 h1 {
@@ -45,7 +50,7 @@ hr {
   display: block;
   width: 100%;               
   background-color: black;
-  height: 1px;
+  height: 2px;
   margin: 0;
 }
 
@@ -57,8 +62,8 @@ nav hr {
 	margin-top: 9px;
 }
 
-nav #logo {
-	width: 150px;
+#logo {
+	width: 200px;
 }
 
 ul {
@@ -72,6 +77,10 @@ li {
 	padding: 3px 8px 4px 8px;
 	display: inline-block;
 	font-size: 15px;
+}
+
+li:active {
+	background-color: red;
 }
 
 li:hover {
@@ -127,7 +136,7 @@ input[type="text"], input[type="textarea"] {
 	color: white;
 	font-size: 15px;
 	font-weight: 300;
-	padding: 8px 12px 10px 12px;
+	padding: 15px 19px 17px 19px;
 	width: calc(100% - 23px);
 }
 
@@ -135,8 +144,21 @@ input[type="text"], input[type="textarea"] {
 	color: #858D95;
 }
 
+#user-input {
+	margin-top: 16px;
+	margin-bottom: 60px;
+}
+
 #user-input-results {
 	display: inline-block
+}
+
+#clear-btn {
+	margin-right: 7px;
+}
+
+#copy-btn {
+	margin-left: 7px;
 }
 
 .word-highlight {
@@ -173,6 +195,11 @@ input[type="text"], input[type="textarea"] {
 	margin-bottom: -10px;
 }
 
+#word-title {
+	text-transform: capitalize;
+	color: #0BE5F5;
+}
+
 #word-details {
 	margin-bottom: -10px;
 }
@@ -182,6 +209,10 @@ input[type="text"], input[type="textarea"] {
 	margin-bottom: -22px;
 	margin-left: 12px;
 	cursor: pointer;
+}
+
+#word-tags-list li {
+	margin-right: 10px;
 }
 
 #sound-icon:hover {
@@ -198,6 +229,8 @@ input[type="text"], input[type="textarea"] {
 #action-buttons {
 	display: flex;
 	justify-content: space-between;
+	position: absolute;
+	bottom: 60px;
 }
 
 #user-input {
@@ -253,7 +286,7 @@ input[type="text"], input[type="textarea"] {
 	}
 
 	#word-details-modal {
-		width: 79%;
+		width: 70%;
 	}
 
 }
