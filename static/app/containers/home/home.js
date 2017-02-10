@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-function HomeCompCtrl($http, $sce) {
+function HomeCompCtrl($http) {
   var homeComp = this;
   homeComp.editArray = [];
   homeComp.currentEditIndex = "";
@@ -53,7 +53,9 @@ function HomeCompCtrl($http, $sce) {
         console.log(homeComp.wordChoices);
         console.log(homeComp.editArray[$index]);
         homeComp.currentEditIndex = homeComp.editArray.indexOf(homeComp.editArray[$index]);
-        console.log("SCE: ", $sce.trustAsResourceUrl(homeComp.specificWordInfo.data.sounds[0]));
+        console.log(homeComp.specificWordInfo.data.sounds[0]);
+        homeComp.untrustedArr = homeComp.specificWordInfo.data.sounds[0].split(":");
+        homeComp.unstrustedArr[0] = "https";
         return response;
       });
   }
@@ -68,4 +70,4 @@ function HomeCompCtrl($http, $sce) {
 
 
 }
-HomeCompCtrl.$inject = ['$http', '$sce'];
+HomeCompCtrl.$inject = ['$http'];
