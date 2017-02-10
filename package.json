@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Crateros/get_hip#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "clipboard": "^1.6.0",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "express-ejs-layouts": "^2.2.0",

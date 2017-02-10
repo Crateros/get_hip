@@ -7,6 +7,8 @@ angular.module('App')
 
 function HomeCompCtrl($http) {
   var homeComp = this;
+  homeComp.editArray = [];
+  homeComp.currentEditIndex = "";
 
   homeComp.searchWord = function(word) {
     console.log("search term: ", homeComp.wordSearchTerm)
@@ -45,8 +47,20 @@ function HomeCompCtrl($http) {
       };
       $http(req).then(function(response) {
         console.log(response);
+        homeComp.wordChoices = response.data.tags;
+        console.log(homeComp.wordChoices);
+        console.log(homeComp.editArray[$index]);
+        homeComp.currentEditIndex = homeComp.editArray.indexOf(homeComp.editArray[$index]);
         return response;
       });
+  }
+
+  homeComp.replaceWord = function() {
+    console.log(homeComp.currentEditIndex);
+    console.log("selectedWord:", homeComp.selectedWord);
+    console.log("wordChoices: ", homeComp.wordChoices);
+    homeComp.editArray[homeComp.currentEditIndex] = homeComp.selectedWord;
+
   }
 
 
