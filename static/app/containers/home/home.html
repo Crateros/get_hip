@@ -1,13 +1,12 @@
 <div class="container">
-	<h4 class="txt-gray">Original: <span class="original">{{homeComp.originalInput}}</span></h4>
-	<hr>
+<!-- 	<h4 class="txt-gray">Original: <span class="original">{{homeComp.originalInput}}</span></h4>
+	<hr> -->
 
-	<h4>Spit some hot fire:</h4>
-	<form ng-submit="homeComp.getUserInput()">
-	    <input type="textarea" name="user-input" id="user-input-area" ng-model="homeComp.userInputArea">
+	<!-- <h4>Spit some hot fire:</h4> -->
+	<form ng-submit="homeComp.getUserInput()" id="user-input">
+	    <input type="textarea" rows="10" name="user-input" id="user-input-area"  ng-model="homeComp.userInputArea" placeholder="Spit some hot fire">
+	    <p id="copy-txt">{{homeComp.editArrayJoined}}</p>
 	</form>
-
-	<p id="copy-txt">{{homeComp.editArrayJoined}}</p>
 
 	<hr>
 
@@ -18,9 +17,8 @@
 
 	<hr>
 
-	<button ng-click="showModal = !showModal">Show modal</button>
 
-	<div id="action-buttons">
+	<div id="action-buttons" ng-show="homeComp.searched == true">
 		<button class="btn-secondary" id="clear-btn" ng-click="homeComp.clearResults()">Clear your Text</button>
 		<button id="copy-btn" data-clipboard-target="#copy-txt" ng-click="homeComp.copyClipboard()">
 			<i class="fa fa-clipboard" aria-hidden="true"></i>
@@ -29,7 +27,7 @@
 	</div>
 </div>
 
-<div id="word-details-modal" ng-show="showModal">
+<div id="word-details-modal" ng-show="homeComp.showModal == true">
 	<div id="word-tags">
 		<h4>Synonyms</h4>
 		<hr>
@@ -56,6 +54,11 @@
 			<strong>{{homeComp.specificWordInfo.data.list[0].author}}</strong>
 		</p>
 
-		<button>Use Word</button>
-
+		<!-- <button>Use Word</button> -->
 	</div>
+
+</div>
+
+<div id="modal-overlay" ng-show="homeComp.showModal == true" ng-click="homeComp.showModal = false">
+	<div id="overlay"></div>
+</div>

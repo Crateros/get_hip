@@ -15,6 +15,8 @@ function HomeCompCtrl($http) {
   homeComp.editArray = [];
   homeComp.wordChoices = [];
   homeComp.currentEditIndex = {};
+  homeComp.showModal = false;
+  homeComp.searched = undefined;
 
   homeComp.searchWord = function(word) {
     console.log("search term: ", homeComp.wordSearchTerm)
@@ -35,6 +37,7 @@ function HomeCompCtrl($http) {
   }
 
   homeComp.getUserInput = function() {
+    homeComp.searched = true;
     console.log("User input: ", homeComp.userInputArea);
     homeComp.originalInput = homeComp.userInputArea;
     homeComp.editArray = homeComp.userInputArea.split(/[ ,.]+/).filter(Boolean);
@@ -44,6 +47,8 @@ function HomeCompCtrl($http) {
   homeComp.searchInput = function($index) {
     homeComp.currentEditIndex = {value: $index}
     console.log("search input: ", homeComp.editArray[$index])
+      homeComp.showModal = true;
+      console.log(homeComp.showModal)
       var req = {
         method: "GET",
         url: 'https://mashape-community-urban-dictionary.p.mashape.com/define?term=' + homeComp.editArray[$index],
@@ -81,6 +86,7 @@ function HomeCompCtrl($http) {
   homeComp.clearResults = function() {
     homeComp.originalInput = "";
     homeComp.editArray = [];
+    $("#user-input-area").val("");
   }
 
 }
