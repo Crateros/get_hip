@@ -1,38 +1,40 @@
-<div class="container">
-<!-- 	<h4 class="txt-gray">Original: <span class="original">{{homeComp.originalInput}}</span></h4>
-	<hr> -->
+<div id="main-area">
+	<div class="container">
+		<div id="logo-container">
+			<img src="img/spitfire_logo.svg" alt="spitfire logo" id="logo">
+		</div>
+	<!-- 	<h4 class="txt-gray">Original: <span class="original">{{homeComp.originalInput}}</span></h4>
+		<hr> -->
 
-	<!-- <h4>Spit some hot fire:</h4> -->
-	<form ng-submit="homeComp.getUserInput()" id="user-input">
-	    <input type="textarea" rows="10" name="user-input" id="user-input-area"  ng-model="homeComp.userInputArea" placeholder="Spit some hot fire">
-	    <p id="copy-txt">{{homeComp.editArrayJoined}}</p>
-	</form>
-
-	<hr>
-
-	<div ng-repeat="n in homeComp.editArray track by $index" id="user-input-results">
-	  <div class="word-highlight" ng-click="homeComp.searchInput($index)">{{homeComp.editArray[$index]}}</div>
-	  <!-- <select ng-click="homeComp.replaceWord()" ng-model="homeComp.selectedWord" ng-options="word as word for word in homeComp.wordChoices"></select> -->
-	</div>
-
-	<hr>
+		<!-- <h4>Spit some hot fire:</h4> -->
+		<form ng-submit="homeComp.getUserInput()" id="user-input">
+		    <input type="textarea" rows="10" name="user-input" id="user-input-area"  ng-model="homeComp.userInputArea" placeholder="Type something here" ng-keydown="homeComp.delayBeforeSearch()">
+		    <p id="copy-txt">{{homeComp.editArrayJoined}}</p>
+		</form>
 
 
-	<div id="action-buttons" ng-show="homeComp.searched == true">
-		<button class="btn-secondary" id="clear-btn" ng-click="homeComp.clearResults()">Clear your Text</button>
-		<button id="copy-btn" data-clipboard-target="#copy-txt" ng-click="homeComp.copyClipboard()">
-			<i class="fa fa-clipboard" aria-hidden="true"></i>
-			Copy to Clipboard
-		</button>
+		<div ng-repeat="n in homeComp.editArray track by $index" id="user-input-results">
+		  <div class="word-highlight" ng-click="homeComp.searchInput($index)">{{homeComp.editArray[$index]}}</div>
+		  <!-- <select ng-click="homeComp.replaceWord()" ng-model="homeComp.selectedWord" ng-options="word as word for word in homeComp.wordChoices"></select> -->
+		</div>
+
+
+		<div class="container" id="action-buttons" ng-show="homeComp.searched == true">
+			<button class="btn-secondary" id="clear-btn" ng-click="homeComp.clearResults()">Clear your Text</button>
+			<button id="copy-btn" data-clipboard-target="#copy-txt" ng-click="homeComp.copyClipboard()">
+				<i class="fa fa-clipboard" aria-hidden="true"></i>
+				Copy to Clipboard
+			</button>
+		</div>
 	</div>
 </div>
 
 <div id="word-details-modal" ng-show="homeComp.showModal == true">
 	<div id="word-tags">
-		<h4>Synonyms</h4>
+		<h4>Related words</h4>
 		<hr>
-		<ul id="word-tags-list" ng-repeat="word in homeComp.specificWordInfo.data.tags track by $index">
-			<li ng-click="homeComp.replaceWord($index)" ng-model="homeComp.specificWordInfo.data.tags[$index]">{{homeComp.specificWordInfo.data.tags[$index]}}</li>
+		<ul id="word-tags-list">
+			<li ng-click="homeComp.replaceWord($index)" ng-model="homeComp.specificWordInfo.data.tags[$index]" ng-repeat="word in homeComp.specificWordInfo.data.tags track by $index">{{homeComp.specificWordInfo.data.tags[$index]}}</li>
 		</ul>
 	</div>
 	<div id="word-details">
