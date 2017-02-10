@@ -25,9 +25,6 @@ angular.module('App', ['ui.router'])
       url: '/',
       component: 'homeComp'
     });
-    //Redirect to login if url not found or not authenticated
-    $urlRouterProvider.otherwise("/");
-    // $urlRouterProvider.otherwise('/');
 
     //Removes # symbol for our routes
     $locationProvider.html5Mode(true);
