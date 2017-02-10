@@ -8,6 +8,7 @@ angular.module('App')
 function HomeCompCtrl($http) {
   var homeComp = this;
   homeComp.editArray = [];
+  homeComp.wordChoices = [];
   homeComp.currentEditIndex = "";
 
   homeComp.searchWord = function(word) {
@@ -50,24 +51,22 @@ function HomeCompCtrl($http) {
         homeComp.specificWordInfo =  response;
         console.log("this is spec word info: ", homeComp.specificWordInfo);
         homeComp.wordChoices = response.data.tags;
-        console.log(homeComp.wordChoices);
+        console.log("Word choices:", homeComp.wordChoices);
         console.log(homeComp.editArray[$index]);
         homeComp.currentEditIndex = homeComp.editArray.indexOf(homeComp.editArray[$index]);
-        console.log(homeComp.specificWordInfo.data.sounds[0]);
-        homeComp.untrustedArr = homeComp.specificWordInfo.data.sounds[0].split(":");
-        homeComp.unstrustedArr[0] = "https";
+        // homeComp.untrustedArr = homeComp.specificWordInfo.data.sounds[0].split(":");
+        // homeComp.untrustedArr[0] = "https:";
+        // homeComp.trustedUrl = homeComp.untrustedArr[0] + homeComp.untrustedArr[1];
         return response;
       });
   }
 
-  homeComp.replaceWord = function() {
-    console.log(homeComp.currentEditIndex);
+  homeComp.replaceWord = function($index) {
+    console.log("Current edit index:", homeComp.currentEditIndex);
     console.log("selectedWord:", homeComp.selectedWord);
     console.log("wordChoices: ", homeComp.wordChoices);
-    homeComp.editArray[homeComp.currentEditIndex] = homeComp.selectedWord;
-
+    homeComp.editArray[homeComp.currentEditIndex] = homeComp.specificWordInfo.data.tags[$index];
   }
-
 
 }
 HomeCompCtrl.$inject = ['$http'];

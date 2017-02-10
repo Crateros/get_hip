@@ -16,11 +16,20 @@
 
 	<hr>
 
-
-	<!-- <h4>Get Hip Search:</h4>
+<!-- <<<<<<< HEAD
+		<div id="word-info-for-ryne" style="border: 2px dotted white">
+			Definition:{{homeComp.specificWordInfo.data.list[0].definition}}
+			<hr>
+			Example:{{homeComp.specificWordInfo.data.list[0].example}} - "{{homeComp.specificWordInfo.data.list[0].author}}"
+			<hr>
+			Sample: <audio controls><source ng-src="" type="audio/mpeg"></audio>
+		</div>
+======= -->
+	<h4>Get Hip Search:</h4>
 	<form ng-submit="homeComp.searchWord()" id=word-search-form>
 	  <input type="text" id="word-search-input" placeholder="Bitchin" ng-model="homeComp.wordSearchTerm">
-	</form> -->
+	</form>
+
 
 	<button ng-click="showModal = !showModal">Show modal</button>
 </div>
@@ -29,18 +38,16 @@
 	<div id="word-tags">
 		<h4>Synonyms</h4>
 		<hr>
-		<ul id="word-tags-list">
-			<li>Stuff</li>
-			<li>Cool</li>
-			<li>kek</li>
-			<li>Lugubrious</li>
-			<li>YOLO</li>
+		<ul id="word-tags-list" ng-repeat="word in homeComp.specificWordInfo.data.tags track by $index">
+			<li ng-click="homeComp.replaceWord($index)" ng-model="homeComp.specificWordInfo.data.tags[$index]">{{homeComp.specificWordInfo.data.tags[$index]}}</li>
 		</ul>
 	</div>
 	<div id="word-details">
 		<span class="header">
-			<h2 id="word-title">Purple Drank</h2>
-			<img src="../../../img/sound.svg" alt="pronunciation" id="sound-icon">
+			<h2 id="word-title">{{homeComp.editArray[$index]}}</h2>
+				<!-- <audio ng-src="{{homeComp.trustedUrl}}">
+					<img src="../../../img/sound.svg" alt="pronunciation" id="sound-icon">
+				</audio> -->
 		</span>
 
 		<p id="word-definition">
