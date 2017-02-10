@@ -110,6 +110,10 @@ input[type="text"], input[type="textarea"] {
 	color: #858D95;
 }
 
+#user-input-results {
+	display: inline-block
+}
+
 .word-highlight {
 	background-color: #23272B;
 	margin: 0px 4px 4px 0;

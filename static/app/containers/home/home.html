@@ -1,4 +1,3 @@
-
 <div class="container">
 	<h4>Original: <span class="original">"{{homeComp.originalInput}}"</span></h4>
 	<hr>
@@ -10,8 +9,9 @@
 
 	<hr>
 
-	<div style="display: inline-block;" ng-repeat="n in homeComp.editArray track by $index" id="user-input-results">
+	<div ng-repeat="n in homeComp.editArray track by $index" id="user-input-results">
 	  <div class="word-highlight" ng-click="homeComp.searchInput($index)">{{homeComp.editArray[$index]}}</div>
+	  <select ng-click="homeComp.replaceWord()" ng-model="homeComp.selectedWord" ng-options="word as word for word in homeComp.wordChoices"></select>
 	</div>
 
 	<hr>
@@ -43,17 +43,16 @@
 		</span>
 
 		<p id="word-definition">
-			Codeine/promethazine cough syrup mixed in with some Sprite. Serve it up in a white styrafoam cup with some ice and your good to go. You can mix it up with all kinds of sodas or just sip the ish. There is NO alcohol in it and its NOT robitussin. It's thick and purple and comes only by prescription or by your local weedman. Not to be sipped by suckas!!!!!
+			{{homeComp.specificWordInfo.data.list[0].definition}}
 		</p>
 		<p class="txt-gray" id="word-example"><em>
-			purple drank up in my cup, blowin dank up in my truck
+			{{homeComp.specificWordInfo.data.list[0].example}}
 		</em></p>
 
 		<p>by
-			<strong>YaBoyRynald</strong>
+			<strong>{{homeComp.specificWordInfo.data.list[0].author}}</strong>
 		</p>
 
 		<button>Use Word</button>
 
 	</div>
-</div>
