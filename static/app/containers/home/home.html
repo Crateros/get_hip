@@ -1,25 +1,59 @@
-<div>
-	<div class="container">
-		<h4>Original: <span class="original">"{{homeComp.originalInput}}"</span></h4>
+
+<div class="container">
+	<h4>Original: <span class="original">"{{homeComp.originalInput}}"</span></h4>
+	<hr>
+
+	<h4>User Input</h4>
+	<form ng-submit="homeComp.getUserInput()">
+	    <input type="textarea" name="user-input" id="user-input-area" ng-model="homeComp.userInputArea">
+	</form>
+
+	<hr>
+
+	<div style="display: inline-block;" ng-repeat="n in homeComp.editArray track by $index" id="user-input-results">
+	  <div class="word-highlight" ng-click="homeComp.searchInput($index)">{{homeComp.editArray[$index]}}</div>
+	</div>
+
+	<hr>
+
+	<h4>Get Hip Search:</h4>
+	<form ng-submit="homeComp.searchWord()" id=word-search-form>
+	  <input type="text" id="word-search-input" placeholder="Bitchin" ng-model="homeComp.wordSearchTerm">
+	</form>
+
+	<button ng-click="showModal = !showModal">Show modal</button>
+</div>
+
+<div id="word-details-modal" ng-show="showModal">
+	<div id="word-tags">
+		<h4>Synonyms</h4>
 		<hr>
+		<ul id="word-tags-list">
+			<li>Stuff</li>
+			<li>Cool</li>
+			<li>kek</li>
+			<li>Lugubrious</li>
+			<li>YOLO</li>
+		</ul>
+	</div>
+	<div id="word-details">
+		<span class="header">
+			<h2 id="word-title">Purple Drank</h2>
+			<img src="../../../img/sound.svg" alt="pronunciation" id="sound-icon">
+		</span>
 
-		<h4>User Input</h4>
-		<form ng-submit="homeComp.getUserInput()">
-		    <input type="textarea" name="user-input" id="user-input-area" ng-model="homeComp.userInputArea">
-		</form>
+		<p id="word-definition">
+			Codeine/promethazine cough syrup mixed in with some Sprite. Serve it up in a white styrafoam cup with some ice and your good to go. You can mix it up with all kinds of sodas or just sip the ish. There is NO alcohol in it and its NOT robitussin. It's thick and purple and comes only by prescription or by your local weedman. Not to be sipped by suckas!!!!!
+		</p>
+		<p class="txt-gray" id="word-example"><em>
+			purple drank up in my cup, blowin dank up in my truck
+		</em></p>
 
-		<hr>
+		<p>by
+			<strong>YaBoyRynald</strong>
+		</p>
 
-		<div style="display: inline-block;" ng-repeat="n in homeComp.editArray track by $index" id="user-input-results">
-		  <div class="word-highlight" ng-click="homeComp.searchInput($index)">{{homeComp.editArray[$index]}}</div>
-		</div>
-
-		<hr>
-
-		<h4>Get Hip Search:</h4>
-		<form ng-submit="homeComp.searchWord()" id=word-search-form>
-		  <input type="text" id="word-search-input" placeholder="Bitchin" ng-model="homeComp.wordSearchTerm">
-		</form>
+		<button>Use Word</button>
 
 	</div>
 </div>
