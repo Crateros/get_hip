@@ -8,36 +8,47 @@ angular.module('App')
 function HomeCompCtrl($http) {
   var homeComp = this;
 
-  // homeComp.searchWord = function(word) {
-  //   console.log("search term: ", homeComp.wordSearchTerm)
-  //   if (homeComp.wordSearchTerm !== undefined && homeComp.wordSearchTerm !== "") {
-  //     var serviceWord = homeComp.wordSearchTerm;
-  //     WordSearch().then(function(response) {
-  //       console.log(response)
-  //     })
-  //   }
-  // }
-
   homeComp.searchWord = function(word) {
     console.log("search term: ", homeComp.wordSearchTerm)
     if (homeComp.wordSearchTerm !== undefined && homeComp.wordSearchTerm !== "") {
-      var serviceWord = homeComp.wordSearchTerm;
-      // $http.defaults.headers.common['X-Mashape-Key'] = '2Io5M1agBJmshkIdUw0kotDZYTWQp1aL0GajsnzOU6V7tiejJ1';
       var req = {
         method: "GET",
-        url: 'https://mashape-community-urban-dictionary.p.mashape.com/define?term=wat',
+        url: 'https://mashape-community-urban-dictionary.p.mashape.com/define?term=' + homeComp.wordSearchTerm,
         headers: {
         'X-Mashape-Key': '2Io5M1agBJmshkIdUw0kotDZYTWQp1aL0GajsnzOU6V7tiejJ1',
         'Accept': "application/json"
         }
       };
-        $http(req)
-        .then(function(response) {
-            console.log(response);
-            return response;
-        });
+      $http(req).then(function(response) {
+        console.log(response);
+        return response;
+      });
     }
   }
+
+  homeComp.getUserInput = function() {
+    console.log("User input: ", homeComp.userInputArea);
+    homeComp.originalInput = homeComp.userInputArea;
+    homeComp.editArray = homeComp.userInputArea.split(/[ ,.]+/).filter(Boolean);
+    console.log("Edited Array: ", homeComp.editArray);
+  }
+
+  homeComp.searchInput = function($index) {
+    console.log("search input: ", homeComp.editArray[$index])
+      var req = {
+        method: "GET",
+        url: 'https://mashape-community-urban-dictionary.p.mashape.com/define?term=' + homeComp.editArray[$index],
+        headers: {
+        'X-Mashape-Key': '2Io5M1agBJmshkIdUw0kotDZYTWQp1aL0GajsnzOU6V7tiejJ1',
+        'Accept': "application/json"
+        }
+      };
+      $http(req).then(function(response) {
+        console.log(response);
+        return response;
+      });
+  }
+
 
 }
 HomeCompCtrl.$inject = ['$http'];
