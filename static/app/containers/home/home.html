@@ -15,6 +15,14 @@
       <select ng-click="homeComp.replaceWord()" ng-model="homeComp.selectedWord" ng-options="word as word for word in homeComp.wordChoices"></select>
 		</div>
 
+		<div id="word-info-for-ryne" style="border: 2px dotted white">
+			Definition:{{homeComp.specificWordInfo.data.list[0].definition}}
+			<hr>
+			Example:{{homeComp.specificWordInfo.data.list[0].example}} - "{{homeComp.specificWordInfo.data.list[0].author}}"
+			<hr>
+			Sample: <audio controls><source ng-src="{{homeComp.specificWordInfo.data.sounds[0]}}" type="audio/mpeg"></audio>
+		</div>
+
 		<hr>
 
 		<h4>Get Hip Search:</h4>
