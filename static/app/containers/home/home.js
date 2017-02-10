@@ -5,11 +5,16 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
+
 function HomeCompCtrl($http) {
+
+  // $sceProvider.enabled(false)
+
+  new Clipboard('#copy-btn');
   var homeComp = this;
   homeComp.editArray = [];
   homeComp.wordChoices = [];
-  homeComp.currentEditIndex = "";
+  homeComp.currentEditIndex = {};
 
   homeComp.searchWord = function(word) {
     console.log("search term: ", homeComp.wordSearchTerm)
@@ -37,6 +42,7 @@ function HomeCompCtrl($http) {
   }
 
   homeComp.searchInput = function($index) {
+    homeComp.currentEditIndex = {value: $index}
     console.log("search input: ", homeComp.editArray[$index])
       var req = {
         method: "GET",
@@ -66,6 +72,15 @@ function HomeCompCtrl($http) {
     console.log("selectedWord:", homeComp.selectedWord);
     console.log("wordChoices: ", homeComp.wordChoices);
     homeComp.editArray[homeComp.currentEditIndex] = homeComp.specificWordInfo.data.tags[$index];
+  }
+
+  homeComp.copyClipboard = function() {
+    homeComp.editArrayJoined = homeComp.editArray.join(' ');
+  }
+
+  homeComp.clearResults = function() {
+    homeComp.originalInput = "";
+    homeComp.editArray = [];
   }
 
 }
