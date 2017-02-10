@@ -6,6 +6,7 @@ angular.module('App')
 });
 
 function HomeCompCtrl($http, $sce) {
+  new Clipboard('#copy-btn');
   var homeComp = this;
   homeComp.editArray = [];
   homeComp.currentEditIndex = "";
@@ -64,6 +65,15 @@ function HomeCompCtrl($http, $sce) {
     console.log("wordChoices: ", homeComp.wordChoices);
     homeComp.editArray[homeComp.currentEditIndex] = homeComp.selectedWord;
 
+  }
+
+  homeComp.copyClipboard = function() {
+    homeComp.editArrayJoined = homeComp.editArray.join(' ');
+  }
+
+  homeComp.clearResults = function() {
+    homeComp.originalInput = "";
+    homeComp.editArray = [];
   }
 
 
