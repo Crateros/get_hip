@@ -5,7 +5,18 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-function HomeCompCtrl() {
+function HomeCompCtrl(WordSearch) {
+  var homeComp = this;
+
+  homeComp.searchWord = function(word) {
+    console.log("search term: ", homeComp.wordSearchTerm)
+    if (homeComp.wordSearchTerm !== undefined && homeComp.wordSearchTerm !== "") {
+      var serviceWord = homeComp.wordSearchTerm;
+      WordSearch.search(serviceWord).then(function(words) {
+        console.log(words)
+      })
+    }
+  }
 
 }
-HomeCompCtrl.$inject = [];
+HomeCompCtrl.$inject = ['WordSearch'];
