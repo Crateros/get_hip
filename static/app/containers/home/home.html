@@ -1,11 +1,13 @@
 <div class="container">
-	<h4>Original: <span class="original">"{{homeComp.originalInput}}"</span></h4>
+	<h4 class="txt-gray">Original: <span class="original">{{homeComp.originalInput}}</span></h4>
 	<hr>
 
-	<h4>User Input</h4>
+	<h4>Spit some hot fire:</h4>
 	<form ng-submit="homeComp.getUserInput()">
 	    <input type="textarea" name="user-input" id="user-input-area" ng-model="homeComp.userInputArea">
 	</form>
+
+	<p id="copy-txt">{{homeComp.editArrayJoined}}</p>
 
 	<hr>
 
@@ -16,12 +18,20 @@
 
 	<hr>
 
-	<h4>Get Hip Search:</h4>
+<!-- 	<h4>Get Hip Search:</h4>
 	<form ng-submit="homeComp.searchWord()" id=word-search-form>
 	  <input type="text" id="word-search-input" placeholder="Bitchin" ng-model="homeComp.wordSearchTerm">
-	</form>
+	</form> -->
 
 	<button ng-click="showModal = !showModal">Show modal</button>
+
+	<div id="action-buttons">
+		<button class="btn-secondary" id="clear-btn" ng-click="homeComp.clearResults()">Clear your Text</button>
+		<button id="copy-btn" data-clipboard-target="#copy-txt" ng-click="homeComp.copyClipboard()">
+			<i class="fa fa-clipboard" aria-hidden="true"></i>
+			Copy to Clipboard
+		</button>
+	</div>
 </div>
 
 <div id="word-details-modal" ng-show="showModal">
