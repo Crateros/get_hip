@@ -5,7 +5,6 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-
 function HomeCompCtrl($http) {
 
   // $sceProvider.enabled(false)
@@ -46,6 +45,7 @@ function HomeCompCtrl($http) {
 
   homeComp.searchInput = function($index) {
     homeComp.currentEditIndex = {value: $index}
+    // console.log("$index: ", $index)
     console.log("search input: ", homeComp.editArray[$index])
       homeComp.showModal = true;
       console.log(homeComp.showModal)
