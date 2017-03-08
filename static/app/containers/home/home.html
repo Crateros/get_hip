@@ -40,8 +40,7 @@
 	<div id="word-details">
 		<span class="header">
 			<h2 id="word-title">{{homeComp.editArray[homeComp.currentEditIndex]}}</h2>
-				<img src="../../../img/sound.svg" alt="pronunciation" id="sound-icon">
-
+				<img src="../../../img/sound.svg" alt="pronunciation" id="sound-icon" ng-show="homeComp.wordSound !== undefined" ng-click="homeComp.playSound()">
 		</span>
 
 		<p id="word-definition">
