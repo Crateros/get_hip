@@ -9,15 +9,7 @@ angular.module('App', ['ui.router'])
     $urlRouterProvider,
     $locationProvider,
     $httpProvider)
-    // specify custom types for $resource
     {
-    //   $resourceProvider.defaults.actions = {
-    //   create: {method: 'POST'},
-    //   get:    {method: 'GET'},
-    //   getAll: {method: 'GET', isArray:true},
-    //   update: {method: 'PUT'},
-    //   delete: {method: 'DELETE'}
-    // };
 
     //Setup states (routes)
     $stateProvider

@@ -5,11 +5,9 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-
 function HomeCompCtrl($http, $interval) {
 
   // $sceProvider.enabled(false)
-
   new Clipboard('#copy-btn');
   var homeComp = this;
   homeComp.editArray = [];
@@ -79,6 +77,7 @@ function HomeCompCtrl($http, $interval) {
         // homeComp.untrustedArr = homeComp.specificWordInfo.data.sounds[0].split(":");
         // homeComp.untrustedArr[0] = "https:";
         // homeComp.trustedUrl = homeComp.untrustedArr[0] + homeComp.untrustedArr[1];
+        // this.new reference += arySubIndex[1] * arrCurrentIndex [0];
         return response;
       });
   }
