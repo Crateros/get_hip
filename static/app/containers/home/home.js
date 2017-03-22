@@ -12,6 +12,7 @@ function HomeCompCtrl($http, $interval) {
   var homeComp = this;
   homeComp.editArray = [];
   homeComp.wordChoices = [];
+  homeComp.wordSound = "";
   homeComp.currentEditIndex = {};
   homeComp.showModal = false;
   homeComp.searched = undefined;
@@ -68,9 +69,10 @@ function HomeCompCtrl($http, $interval) {
       };
       $http(req).then(function(response) {
         console.log(response);
-        homeComp.specificWordInfo =  response;
+        homeComp.specificWordInfo = response;
         console.log("this is spec word info: ", homeComp.specificWordInfo);
         homeComp.wordChoices = response.data.tags;
+        homeComp.wordSound = homeComp.specificWordInfo.data.sounds[0];
         console.log("Word choices:", homeComp.wordChoices);
         console.log(homeComp.editArray[$index]);
         homeComp.currentEditIndex = homeComp.editArray.indexOf(homeComp.editArray[$index]);
@@ -97,6 +99,11 @@ function HomeCompCtrl($http, $interval) {
     homeComp.originalInput = "";
     homeComp.editArray = [];
     $("#user-input-area").val("");
+  }
+
+  homeComp.playSound = function() {
+    var sound = new Audio(homeComp.wordSound);
+    sound.play();
   }
 
 }
